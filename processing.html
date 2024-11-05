@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Report is Ready</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://teameteas.com/cdn/shop/articles/shopify_blog_images_1.jpg?v=1724150703&width=1400');
+            background-size: cover;
+            background-position: center;
+            color: #333;
+            animation: backgroundAnimation 10s infinite alternate;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { background-color: rgba(255, 255, 255, 0.1); }
+            100% { background-color: rgba(255, 255, 255, 0.5); }
+        }
+
+        header {
+            padding: 30px;
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateY(-20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 70vh;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px); /* Glassmorphism effect */
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .container img {
+            margin-top: 20px;
+            width: 180px;
+            height: auto;
+            border-radius: 12px;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #FF5722, #FF9800); /* Gradient button */
+            color: rgba(255, 255, 255, 0.9);
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 20px;
+            margin-top: 30px;
+            transition: background 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.034);
+            font-weight: bold;
+        }
+
+        a:hover {
+            background: linear-gradient(45deg, #E64A19, #FF5722);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        a::before {
+            content: '⬇';
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 05px;
+            color: white;
+            position: relative;
+            margin-top: 20px;
+            z-index: 1;
+        }
+
+        footer p {
+            margin: 2px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Your MIS Report is Ready!</h1>
+        <p style="font-size: 1.2em;">Click below to download your report.</p>
+    </header>
+
+    <div class="container">
+        <a href="/download">Download Report</a>
+    </div>
+
+    <footer>
+        <div class="footer-content" style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+            <p style="margin: 5px 0; color: rgb(255, 255, 255);">@Madhu Jayanti International Pvt. Ltd. &copy; 2024</p>
+            <p style="margin: 5px 0; color: rgb(255, 255, 255);">Powered by Sirshendu Kundu</p>
+        </div>
+    </footer>
+
+</body>
+</html>

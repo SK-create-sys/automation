@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MJIPL - Automated Reports</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      background-image: url('https://static.vecteezy.com/system/resources/thumbnails/043/031/486/small_2x/steaming-tea-cup-on-moist-surface-photo.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    header {
+      background: linear-gradient(135deg, #ffffff, #ffffff);
+      padding: 10px;
+      text-align: center;
+      color: white;
+      position: relative;
+      background-image: url('https://images.pexels.com/photos/675928/pexels-photo-675928.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Style for h1 */
+    header h1 {
+      font-size: 3.5em;
+      margin: 0;
+      animation: fadeIn 1s ease-in-out;
+      text-shadow: 2px 2px 4px rgb(0, 0, 0);
+      padding: 10px;  /* Padding for space around the text */
+      display: inline-block; /* Ensure border wraps tightly around the text */
+      border-radius: 15px; /* Round the corners of the border */
+    }
+
+  /* Style for p (Subtitle) */
+    header p {
+      font-size: 1.0em;
+      color: #ffffff;
+      margin-top: 5px;
+      border: 2px solid #fff;  /* Add a border around the paragraph */
+      padding: 5px 08px; /* Padding for space around the text */
+      display: inline-block; /* Ensure border wraps tightly around the text */
+      border-radius: 07px; /* Round the corners of the border */
+      box-shadow: 0 2px 4px rgb(252, 250, 250);
+      background-color: rgb(0, 0, 0); /* Semi-transparent background */
+    }
+
+  /* Keyframes for fadeIn */
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 70vh;
+      position: relative;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 0.5fr));
+      gap: 10px;
+      max-width: 900px;
+    }
+
+    .option-btn {
+      background-color: rgba(255, 255, 255, 0.9);
+      border: 2px solid #4CAF50;
+      padding: 5px; /* Reduced padding */
+      border-radius: 10px;
+      text-align: center;
+      cursor: pointer;
+      font-size: 0.7em; /* Reduced font size */
+      color: #333;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      height: 50px; /* Fixed height */
+    }
+
+  .option-title {
+  font-weight: bold; /* Make the text bold */
+  font-size: 1.2em; /* Increase font size */
+  text-align: center; /* Center align the text */
+    }
+
+    .option-btn img {
+      max-width: 80px; /* Adjust the image size */
+      margin-bottom: 5px; /* Reduced margin */
+      border-radius: 50%;
+      transition: transform 0.3s;
+    }
+
+    .option-btn:hover {
+      background-color: #086677;
+      color: white;
+      transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .option-btn:hover img {
+      transform: scale(1.2);
+    }
+
+  .hidden {
+    display: none;
+  }
+
+    /* Logo Container */
+  .logo-container {
+    position: absolute;
+    top: 20px; /* Adjust as needed */
+    left: 20px; /* Adjust as needed */
+    width: 60px; /* Adjust the logo size */
+    height: 60px;
+    z-index: 100; /* Make sure it's on top of other elements */
+  }
+
+  /* Logo Styling */
+  .logo {
+    width: 100%;
+    height: auto;
+    border-radius: 50%; /* Make the logo round */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: rotateLogo 5s linear infinite; /* Apply the rotation animation */
+  }
+
+
+    .section-content {
+      padding: 40px;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      margin: 20px auto;
+      max-width: 700px;
+      animation: slideIn 1s ease-out;
+    }
+
+    @keyframes slideIn {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+        /* Styling for the Next Page button */
+    .next-button {
+      background-color: yellow; /* Button background color */
+      color: black;             /* Text color */
+      padding: 10px 20px;       /* Add padding for a better look */
+      border: none;             /* Remove default border */
+      border-radius: 5px;       /* Rounded corners */
+      cursor: pointer;          /* Change cursor to pointer on hover */
+      font-size: 16px;          /* Set font size */
+      display: block;           /* Make it a block element */
+      margin: 20px auto;        /* Center the button horizontally */
+    }
+
+    /* Optional: Add hover effect */
+    .next-button:hover {
+      background-color: orange; /* Change color on hover */
+    }
+
+
+    footer {
+      text-align: center;
+      padding: 1px 3px; /* Smaller padding: 2px for top/bottom, 5px for left/right */
+      background-color: #000c06;
+      color: rgb(2, 0, 110);
+      position: relative;
+      background-size: cover;
+      background-position: center;
+    }
+
+    footer img {
+      width: 20px;
+      margin-top: 8px;
+    }
+
+    form {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      margin: 0 auto;
+      max-width: 500px;
+      text-align: left;
+    }
+
+    input[type="file"], input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+    input[type="submit"] {
+      background-color: #1f87ff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0468fd;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ffffff, #e0f7fa);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      width: 60px; /* Logo size */
+      height: 60px;
+      margin-right: 20px;
+    }
+
+    .logo img {
+      width: 100%;
+      height: auto;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .gif-container {
+      margin-top: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+
+    .back-button {
+    background-color: black; /* Black background */
+    color: white; /* White text */
+    font-weight: bold; /* Bold text */
+    border: none; /* Remove border */
+    padding: 07px 14px; /* Add padding */
+    border-radius: 7px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 12px; /* Font size */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+  }
+
+  .back-button:hover {
+    background-color: #333; /* Darker shade on hover */
+  }
+
+  .loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's above other content */
+  }
+
+  .loading-content {
+    text-align: center;
+  }
+
+  .loading-overlay.hidden {
+    display: none; /* Hide when not needed */
+  }
+
+
+    @media (max-width: 768px) {
+      .options {
+        grid-template-columns: 1fr;
+      }
+
+      header h1 {
+        font-size: 2.5em;
+      }
+
+      .content {
+        height: auto;
+        padding: 20px;
+      }
+    }
+
+    .horizontal-bar {
+        width: 100%; /* Full width */
+        height: 2px; /* Adjust height of the bar */
+        background-size: cover;
+        background-position: center;
+        margin-top: 20px; /* Add spacing above the bar */
+    }
+
+    .btn-download {
+        padding: 5px 10px; /* Adjust padding for size */
+        font-size: 12px; /* Smaller font size */
+        background: linear-gradient(45deg, rgba(255, 255, 255, 0.685), #00a51b, #FF9800);
+        color: #fff; /* White text color */
+        border: none; /* Remove border */
+        border-radius: 5px; /* Optional: rounded corners */
+        text-decoration: none; /* Remove underline */
+        display: inline-block; /* Keep it inline with other elements */
+        transition: background 0.3s; /* Smooth background transition */
+    }
+
+    .btn-download:hover {
+        background: linear-gradient(#FF9800, #00a51b); /* Change gradient on hover */
+    }
+
+    .custom-button {
+        background-color: black; /* Button background color */
+        color: white;            /* Text color */
+        padding: 4px 7px;       /* Padding for the button */
+        font-size: 10px;        /* Font size */
+        text-decoration: none;   /* Remove underline */
+        border-radius: 3px;     /* Rounded corners */
+        display: inline-block;   /* Makes the anchor behave like a button */
+        margin-bottom: 10px;    /* Space below the button */
+    }
+
+    h2 {
+      background-color: green;   /* Set background color to green */
+      color: white;              /* Set text color to white */
+      display: inline-block;     /* Ensure only the text area gets the background */
+      padding: 2px 4px;         /* Add some padding for spacing (adjusted) */
+      margin-right: 3px;         /* Optional: Slight margin for spacing */
+      border-radius: 5px;
+      font-size: 14px;         
+    }
+    .right-aligned {
+      text-align: right; /* Align text to the right */
+      margin: 0; /* Optional: remove default margin */
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- Page 1 (First HTML Code) -->
+<div id="page-1">
+
+  <header>
+    <div class="logo-container">
+      <img src="https://images.jdmagicbox.com/comp/kolkata/11/033p12111/catalogue/madhu-jayanti-international-ltd-bowbazar-kolkata-tea-manufacturers-790058mweg.jpg" alt="Company Logo" class="logo">
+    </div>
+    <h1>Automated Project Report Generator</h1>
+    <p>Streamlined MIS Reports at Your Fingertips</p>
+  </header>
+  <h2>Department of Accounts</h2>
+
+  <div class="content" id="main-content-page1">
+    <div class="options">
+      <div class="option-btn" onclick="openDepartmentSection()">
+        <img src="https://images.pexels.com/photos/16576832/pexels-photo-16576832/free-photo-of-interesting-details-on-two-cups-and-small-plates.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+        <div class="option-title">Department Wise Analysis</div>
+        <div class="horizontal-bar"></div>
+      </div>
+
+      <div class="option-btn" onclick="openinsuranceSection()">
+        <img src="https://images.pexels.com/photos/16576832/pexels-photo-16576832/free-photo-of-interesting-details-on-two-cups-and-small-plates.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+        <div class="option-title">Insurance MIS Report</div>
+        <div class="horizontal-bar"></div>
+      </div>
+
+      <div class="option-btn" onclick="openledgerSection()">
+        <img src="https://images.pexels.com/photos/16576832/pexels-photo-16576832/free-photo-of-interesting-details-on-two-cups-and-small-plates.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+        <div class="option-title">Ledger MIS Report</div>
+        <div class="horizontal-bar"></div>
+      </div>
+
+      <div class="option-btn" onclick="opencylySection()">
+        <img src="https://images.pexels.com/photos/16576832/pexels-photo-16576832/free-photo-of-interesting-details-on-two-cups-and-small-plates.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+        <div class="option-title">CY & LY Sales Comparison</div>
+        <div class="horizontal-bar"></div>
+      </div> 
+      
+      <div class="option-btn" onclick="openblendSection()">
+        <img src="https://images.pexels.com/photos/16576832/pexels-photo-16576832/free-photo-of-interesting-details-on-two-cups-and-small-plates.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+        <div class="option-title">Blend Overhead Report</div>
+        <div class="horizontal-bar"></div>
+      </div>
+
+      <div class="option-btn" onclick="openexpnsmvmtSection()">
+        <img src="https://images.pexels.com/photos/16576832/pexels-photo-16576832/free-photo-of-interesting-details-on-two-cups-and-small-plates.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+        <div class="option-title">Expenses Wise Movement</div>
+        <div class="horizontal-bar"></div>
+      </div> 
+    </div>
+  </div>
+
+  <div id="upload-section-page1" class="section-content hidden">
+    <div class="department-header header">
+      <div class="logo">
+        <img src="https://images.jdmagicbox.com/comp/kolkata/11/033p12111/catalogue/madhu-jayanti-international-ltd-bowbazar-kolkata-tea-manufacturers-790058mweg.jpg" alt="Company Logo">
+      </div>
+      <h1>Department Corporate Report</h1>
+    </div>
+
+    <div class="department-container container">
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+        <label for="allocation">Add here Master File: (Add all rows from the Error Sheet to the master file, fill the 'Allocation' column, and upload the updated master.)</label>
+        <input type="file" name="allocation" id="allocation" accept=".xlsx">
+    <!-- Download Button -->
+    <div class="download-section">
+      <a href="/department-master" class="btn btn-download">Download Existing Master</a>
+    </div>        
+
+        <label for="trial">Add here Trial File(Detailed Ledger):</label>
+        <input type="file" name="trial" id="trial" accept=".xlsx" required>
+
+        <label for="sales">Add here Sales Register File:</label>
+        <input type="file" name="sales" id="sales" accept=".xlsx" required>
+
+        <label for="lastsales">Add here Last Year Sales File (Optional):</label>
+        <input type="file" name="lastsales" id="lastsales" accept=".xlsx">
+           <!-- Download Button -->
+      <div class="download-section">
+        <a href="/department-lastyr" class="btn btn-download">Download Last Year Sales</a>
+      </div>          
+
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+
+    <div class="insurance-header header hidden">
+      <div class="logo">
+        <img src="https://images.jdmagicbox.com/comp/kolkata/11/033p12111/catalogue/madhu-jayanti-international-ltd-bowbazar-kolkata-tea-manufacturers-790058mweg.jpg" alt="Company Logo">
+      </div>
+      <h1>Insurance MIS Report</h1>
+    </div>
+
+    <div class="insurance-container container hidden">
+      <form action="/insurance-upload" method="POST" enctype="multipart/form-data">
+        <label for="allocation">Add here Master File: (Add all rows from the Error Sheet to the master file, fill the 'Allocation' column, and upload the updated master.)</label>
+        <input type="file" name="allocation" id="allocation" accept=".xlsx">
+      <!-- Download Button -->
+    <div class="download-section">
+      <a href="/insurance-master" class="btn btn-download">Download Existing Master</a>
+    </div>  
+        <label for="sales">Add here Sales File:</label>
+        <input type="file" name="sales" id="sales" accept=".xlsx" required>
+
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+
+    <div class="expnsmvmt-header header hidden">
+      <div class="logo">
+        <img src="https://images.jdmagicbox.com/comp/kolkata/11/033p12111/catalogue/madhu-jayanti-international-ltd-bowbazar-kolkata-tea-manufacturers-790058mweg.jpg" alt="Company Logo">
+      </div>
+      <h1>Expenses Wise Movement Report</h1>
+    </div>
+
+    <div class="expnsmvmt-container container hidden">
+      <form action="/expnsmvmt-upload" method="POST" enctype="multipart/form-data">
+        <label for="allocation">Add here Master File: (Add all rows from the Error_Rows Sheet to the master file [factory & Sales] ,and upload the updated master )</label>
+        <input type="file" name="allocation" id="allocation" accept=".xlsx">
+      <!-- Download Button -->
+    <div class="download-section">
+      <a href="/expnsmvmt-master" class="btn btn-download">Download Existing Master</a>
+    </div>  
+        <label for="trial">Add here Trial File (Detailed Ledger):</label>
+        <input type="file" name="trial" id="trial" accept=".xlsx" required>
+
+        <input type="submit" value="Submit">
+      </form>
+    </div>    
+
+    <div class="ledger-header header hidden">
+      <div class="logo">
+        <img src="https://images.jdmagicbox.com/comp/kolkata/11/033p12111/catalogue/madhu-jayanti-international-ltd-bowbazar-kolkata-tea-manufacturers-790058mweg.jpg" alt="Company Logo">
+      </div>
+      <h1>ledger MIS Report</h1>
+    </div>
+
+    <div class="ledger-container container hidden">
+      <form action="/ledger-upload" method="POST" enctype="multipart/form-data">
+        <label for="ledger">Add here Trial File (Detailed Ledger):</label>
+        <input type="file" name="ledger" id="ledger" accept=".xlsx" required>
+        <label for="sales">Add here Sales Rgst. File:</label>
+        <input type="file" name="sales" id="sales" accept=".xlsx" required>
+
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+
+    <div class="cyly-header header hidden">
+      <div class="logo">
+        <img src="https://images.jdmagicbox.com/comp/kolkata/11/033p12111/catalogue/madhu-jayanti-international-ltd-bowbazar-kolkata-tea-manufacturers-790058mweg.jpg" alt="Company Logo">
+      </div>
+      <h1>CY & LY Sales Comparison</h1>
+    </div>
+
+    <div class="cyly-container container hidden">
+      <form action="/cyly-upload" method="POST" enctype="multipart/form-data">
+        <label for="allocation">Add here Master File: (Add all rows from the Error Sheet to the master file, fill the 'Allocation' column, and upload the updated master.)</label>
+        <input type="file" name="allocation" id="allocation" accept=".xlsx">   
+      <!-- Download Button -->
+      <div class="download-section">
+        <a href="/cyly-master" class="btn btn-download">Download Existing Master</a>
+      </div>          
+        
+        <label for="salescy">Add here Current Year Sales File:</label>
+        <input type="file" name="salescy" id="salescy" accept=".xlsx" required>
+        <label for="salesly">Add here Last Year Sales File (Optional):</label>
+        <input type="file" name="salesly" id="salesly" accept=".xlsx">
+      <!-- Download Button -->
+      <div class="download-section">
+        <a href="/cyly-lastyr" class="btn btn-download">Download Last Year Sales Rgst.</a>
+      </div>        
+
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+    
+    <div class="blend-header header hidden">
+      <div class="logo">
+        <img src="https://images.jdmagicbox.com/comp/kolkata/11/033p12111/catalogue/madhu-jayanti-international-ltd-bowbazar-kolkata-tea-manufacturers-790058mweg.jpg" alt="Company Logo">
+      </div>
+      <h1>Blend Overhead Report</h1>
+    </div>
+
+    <div class="blend-container container hidden">
+      <form action="/blend-upload" method="POST" enctype="multipart/form-data">
+        <label for="allocation">Add here Master File: (Add all rows from the Error Sheets to the master file, fill the Blank column Value, and upload the updated master.)</label>
+        <input type="file" name="allocation" id="allocation" accept=".xlsx, .xls">
+      <!-- Download Button -->
+      <div class="download-section">
+        <a href="/blendovr-master" class="btn btn-download">Download Existing Master</a>
+      </div>   
+
+        <label for="dptfile">Add here Trial File: (Detailed Ledger)</label>
+        <input type="file" name="dptfile" id="dptfile" accept=".xlsx, .xls" required>
+
+        <!-- KOL DOM Section -->
+        <div class="download-section">
+          <a href="/process_filesname" class="custom-button">
+            In Folder Months Exist
+          </a>
+        </div>
+        <label for="kol_dom">KOL DOM Blend Month file: (Open the downloaded file, save it as [KOLDOM_Monthname], and then Upoload here )</label>
+        <input type="file" id="kol_dom" name="kol_dom" accept=".xlsx, .xls">
+
+
+        <!-- KOL EOU Section -->
+        <label for="kol_eou">KOL EOU Blend Month file: (Open the downloaded file, save it as [KOLEOU_Monthname], and then Upoload here )</label>
+        <input type="file" id="kol_eou" name="kol_eou" accept=".xlsx, .xls">
+
+        <!-- CBE Section -->
+        <label for="cbe">CBE Blend Month file: (Open the downloaded file, save it as [CBE_Monthname], and then Upoload here )</label>
+        <input type="file" id="cbe" name="cbe" accept=".xlsx, .xls">
+ 
+        <label for="rately">Add here last year Rate File: (Optional)</label>
+        <input type="file" name="rately" id="rately" accept=".xlsx, .xls">
+      <!-- Download Button -->
+      <div class="download-section">
+        <a href="/blendovr-lastyr" class="btn btn-download">Download Last Year Rate File</a>
+      </div>          
+
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+
+    <button class="back-button" onclick="backToMain()">Back to Main Menu</button>
+  </div>
+
+  <div id="loading-overlay" class="loading-overlay hidden">
+    <div class="loading-content">
+        <p>YOUR REPORT PREPARING....</p>
+        <img src="https://s1.aigei.com/src/img/gif/f9/f9692dd82962448fb49533bdb81b252d.gif?imageMogr2/auto-orient/thumbnail/!282x282r/gravity/Center/crop/282x282/quality/85/%7CimageView2/2/w/282&e=1735488000&token=P7S2Xpzfz11vAkASLTkfHN7Fw-oOZBecqeJaxypL:FKZJ6BP9PNc2oXrxLo2XparmLxA=" alt="we prepare your report" />
+    </div>
+  </div>
+  <!-- Next Page Button placed above the footer -->
+  <button class="next-button" onclick="showNextPage()">Next Page</button>
+
+  <footer style="background-color: #0b1a11; color: #ffffffbd; padding: 7px 0; position: relative;">
+    <div class="footer-content" style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+      <p style="margin: 3px 0;">@Madhu Jayanti International Pvt. Ltd. &copy; 2024</p>
+      <p style="margin: 3px 0;">Website - <a href="https://teameteas.com/" target="_blank" style="color: #ffffffbd; text-decoration: none;">https://teameteas.com/</a></p>
+      <p style="margin: 3px 0;">Powered by <strong>Sirshendu Kundu</strong></p>
+    </div>
+  </footer>
+  
+
+
+  <script>
+
+    // For Department Analysis ...
+    function openDepartmentSection() {
+      document.getElementById("upload-section-page1").classList.remove("hidden");
+      document.getElementById("main-content-page1").style.display = "none"; // Hide main content
+  
+      // Show only the department upload section
+      document.querySelector('.department-container').style.display = 'block'; // Show department container
+      document.querySelector('.insurance-container').style.display = 'none';  // Hide insurance container
+      document.querySelector('.ledger-container').style.display = 'none'; 
+      document.querySelector('.cyly-container').style.display = 'none'; 
+      document.querySelector('.blend-container').style.display = 'none'; 
+      document.querySelector('.expnsmvmt-container').style.display = 'none'; 
+  
+      // Show department header and hide insurance header
+      document.querySelector('.department-header').classList.remove('hidden'); // Show department header
+      document.querySelector('.insurance-header').style.display = 'none';  // Hide insurance header
+      document.querySelector('.ledger-header').style.display = 'none';
+      document.querySelector('.cyly-header').style.display = 'none';
+      document.querySelector('.blend-header').style.display = 'none';
+      document.querySelector('.expnsmvmt-header').style.display = 'none';
+    }
+
+    // For Insurance MIS ......
+    function openinsuranceSection() {
+      document.getElementById("upload-section-page1").classList.remove("hidden");
+      document.getElementById("main-content-page1").style.display = "none"; // Hide main content
+  
+      // Show only the insurance upload section
+      document.querySelector('.insurance-container').style.display = 'block'; // Show insurance container
+      document.querySelector('.department-container').style.display = 'none';
+      document.querySelector('.ledger-container').style.display = 'none'; // Hide department container
+      document.querySelector('.cyly-container').style.display = 'none';
+      document.querySelector('.blend-container').style.display = 'none';
+      document.querySelector('.expnsmvmt-container').style.display = 'none'; 
+
+      // Show insurance header and hide department header
+      document.querySelector('.insurance-header').classList.remove('hidden'); // Show insurance header
+      document.querySelector('.department-header').style.display = 'none'; // Ensure department header is hidden
+      document.querySelector('.ledger-header').style.display = 'none';
+      document.querySelector('.cyly-header').style.display = 'none';
+      document.querySelector('.blend-header').style.display = 'none';
+      document.querySelector('.expnsmvmt-header').style.display = 'none'; 
+    }
+
+    // For Ledger MIS ....
+    function openledgerSection() {
+      document.getElementById("upload-section-page1").classList.remove("hidden");
+      document.getElementById("main-content-page1").style.display = "none"; // Hide main content
+  
+      // Show only the insurance upload section
+      document.querySelector('.ledger-container').style.display = 'block'; // Show ledger container
+      document.querySelector('.department-container').style.display = 'none';// Hide department container
+      document.querySelector('.insurance-container').style.display = 'none'; 
+      document.querySelector('.cyly-container').style.display = 'none'; 
+      document.querySelector('.blend-container').style.display = 'none';
+      document.querySelector('.expnsmvmt-container').style.display = 'none';
+  
+      // Show insurance header and hide department header
+      document.querySelector('.ledger-header').classList.remove('hidden'); // Show ledger header
+      document.querySelector('.department-header').style.display = 'none'; // Ensure department header is hidden
+      document.querySelector('.insurance-header').style.display = 'none';
+      document.querySelector('.cyly-header').style.display = 'none';
+      document.querySelector('.blend-header').style.display = 'none';
+      document.querySelector('.expnsmvmt-header').style.display = 'none';
+    }
+
+    // For CY & LY Sales ....
+    function opencylySection() {
+      document.getElementById("upload-section-page1").classList.remove("hidden");
+      document.getElementById("main-content-page1").style.display = "none"; // Hide main content
+  
+      // Show only the insurance upload section
+      document.querySelector('.cyly-container').style.display = 'block'; // Show ledger container
+      document.querySelector('.department-container').style.display = 'none';// Hide department container
+      document.querySelector('.insurance-container').style.display = 'none'; 
+      document.querySelector('.ledger-container').style.display = 'none'; 
+      document.querySelector('.blend-container').style.display = 'none';
+      document.querySelector('.expnsmvmt-container').style.display = 'none'; 
+  
+      // Show insurance header and hide department header
+      document.querySelector('.cyly-header').classList.remove('hidden'); // Show ledger header
+      document.querySelector('.department-header').style.display = 'none'; // Ensure department header is hidden
+      document.querySelector('.insurance-header').style.display = 'none';
+      document.querySelector('.ledger-header').style.display = 'none';
+      document.querySelector('.blend-header').style.display = 'none';
+      document.querySelector('.expnsmvmt-header').style.display = 'none';
+    }    
+
+    // For BLEND Overhead ....
+    function openblendSection() {
+      document.getElementById("upload-section-page1").classList.remove("hidden");
+      document.getElementById("main-content-page1").style.display = "none"; // Hide main content
+  
+      // Show only the insurance upload section
+      document.querySelector('.blend-container').style.display = 'block'; // Show ledger container
+      document.querySelector('.department-container').style.display = 'none';// Hide department container
+      document.querySelector('.insurance-container').style.display = 'none'; 
+      document.querySelector('.ledger-container').style.display = 'none'; 
+      document.querySelector('.cyly-container').style.display = 'none'; 
+      document.querySelector('.expnsmvmt-container').style.display = 'none';
+  
+      // Show insurance header and hide department header
+      document.querySelector('.blend-header').classList.remove('hidden'); // Show ledger header
+      document.querySelector('.department-header').style.display = 'none'; // Ensure department header is hidden
+      document.querySelector('.insurance-header').style.display = 'none';
+      document.querySelector('.ledger-header').style.display = 'none';
+      document.querySelector('.cyly-header').style.display = 'none';
+      document.querySelector('.expnsmvmt-header').style.display = 'none';
+    }     
+    
+    // For Expenses WISE Movement ....
+    function openexpnsmvmtSection() {
+      document.getElementById("upload-section-page1").classList.remove("hidden");
+      document.getElementById("main-content-page1").style.display = "none"; // Hide main content
+  
+      // Show only the insurance upload section
+      document.querySelector('.expnsmvmt-container').style.display = 'block'; // Show ledger container
+      document.querySelector('.department-container').style.display = 'none';// Hide department container
+      document.querySelector('.insurance-container').style.display = 'none'; 
+      document.querySelector('.ledger-container').style.display = 'none'; 
+      document.querySelector('.cyly-container').style.display = 'none'; 
+      document.querySelector('.blend-container').style.display = 'none';
+  
+      // Show insurance header and hide department header
+      document.querySelector('.expnsmvmt-header').classList.remove('hidden'); // Show ledger header
+      document.querySelector('.department-header').style.display = 'none'; // Ensure department header is hidden
+      document.querySelector('.insurance-header').style.display = 'none';
+      document.querySelector('.ledger-header').style.display = 'none';
+      document.querySelector('.cyly-header').style.display = 'none';
+      document.querySelector('.blend-header').style.display = 'none';
+    }            
+
+  
+    function backToMain() {
+      // Hide the upload section and show the main content
+      document.getElementById("upload-section-page1").classList.add("hidden");
+      document.getElementById("main-content-page1").style.display = "flex"; // Show main content
+    }
+  
+    function showLoading() {
+      // Show loading overlay
+      document.getElementById("loading-overlay").classList.remove("hidden");
+    }
+  
+    // Add event listeners to both forms to show loading overlay on submit
+    document.querySelectorAll('form').forEach(form => {
+      form.addEventListener('submit', showLoading);
+    });
+  </script>
+</div>
+
+<!-- Page 2 (Second HTML Code) -->
+<div id="page-2" class="hidden">
+
+  <header>
+    <div class="logo-container">
+      <img src="https://images.jdmagicbox.com/comp/kolkata/11/033p12111/catalogue/madhu-jayanti-international-ltd-bowbazar-kolkata-tea-manufacturers-790058mweg.jpg" alt="Company Logo" class="logo">
+    </div>
+    <h1>Automated Project Report Generator</h1>
+    <p>Streamlined MIS Reports at Your Fingertips</p>
+  </header>
+  <h2>Department of Ecommerce</h2>
+
+  <div class="content" id="main-content-page2">
+    <div class="options">
+      <div class="option-btn" onclick="opengoogleSection()">
+        <img src="https://images.pexels.com/photos/16576832/pexels-photo-16576832/free-photo-of-interesting-details-on-two-cups-and-small-plates.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+        <div class="option-title">Scrape From Google</div>
+        <div class="horizontal-bar"></div>
+      </div>
+      <div class="option-btn" onclick="openmmtSection()">
+        <img src="https://images.pexels.com/photos/16576832/pexels-photo-16576832/free-photo-of-interesting-details-on-two-cups-and-small-plates.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+        <div class="option-title">Scrape From MakeMyTrip</div>
+        <div class="horizontal-bar"></div>
+      </div>
+      <div class="option-btn" onclick="openecomarketSection()">
+        <img src="https://images.pexels.com/photos/16576832/pexels-photo-16576832/free-photo-of-interesting-details-on-two-cups-and-small-plates.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
+        <div class="option-title">Online Market Sales</div>
+        <div class="horizontal-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Google Scrape Section -->
+  <div id="upload-section-page2" class="section-content hidden">
+    <div class="googlescrap-header header">
+      <div class="logo">
+        <img src="https://images.jdmagicbox.com/comp/kolkata/11/033p12111/catalogue/madhu-jayanti-international-ltd-bowbazar-kolkata-tea-manufacturers-790058mweg.jpg" alt="Company Logo">
+      </div>
+      <h1>Scraping from Google</h1>
+    </div>
+  
+    <!-- Google Container -->
+    <div class="googlescrap-container container" style="display: none;">
+      <p>Enter one or more URLs separated by commas to scrape hotel data:</p>
+      <form action="/scrapegoogle" method="POST" class="mt-3">
+        <div class="form-group">
+          <label for="urls">Enter URL(s) to scrape:</label>
+          <input type="text" class="form-control" id="urls" name="urls" required placeholder="Enter one or more URLs separated by commas">
+        </div>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+  
+    <!-- MakeMyTrip Scrape Section -->
+    <div class="mmtscrap-header header hidden">
+      <div class="logo">
+        <img src="https://images.jdmagicbox.com/comp/kolkata/11/033p12111/catalogue/madhu-jayanti-international-ltd-bowbazar-kolkata-tea-manufacturers-790058mweg.jpg" alt="Company Logo">
+      </div>
+      <h1>Scraping from MakeMyTrip</h1>
+    </div>
+  
+    <!-- MakeMyTrip Container -->
+    <div class="mmtscrap-container container hidden" style="display: none;">
+      <p>Enter one URL from Website:</p>
+      <form action="/scrapemmt" method="POST" class="mt-3">
+        <label for="url">Enter MakeMyTrip Hotel URL:</label><br><br>
+        <input type="text" id="url" name="url" placeholder="https://example.com" required><br><br>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+
+    <div class="ecomarketscrap-header header">
+      <div class="logo">
+        <img src="https://images.jdmagicbox.com/comp/kolkata/11/033p12111/catalogue/madhu-jayanti-international-ltd-bowbazar-kolkata-tea-manufacturers-790058mweg.jpg" alt="Company Logo">
+      </div>
+      <h1>Online Market Sales</h1>
+    </div>
+
+    <div class="ecomarketscrap-container container hidden">
+      <form action="/ecomarket-upload" method="POST" enctype="multipart/form-data">
+        <label for="allocation">Add here Master File:</label>
+        <input type="file" name="allocation" id="allocation" accept=".xlsx, .xls">
+      <!-- Download Button -->
+      <div class="download-section">
+        <a href="/ecomarket-master" class="btn btn-download">Download Existing Master</a>
+      </div> 
+
+        <div class="download-section">
+          <a href="/process-filenames" class="custom-button">
+            In Folders Month Exist
+          </a>
+        </div>
+        <label for="amazon_market_place">amazon market place file:</label>
+        <input type="file" id="amazon_market_place" name="amazon_market_place" accept=".csv">
+
+        <label for="ARIPL_Sales">ARIPL file:</label>
+        <input type="file" id="ARIPL_Sales" name="ARIPL_Sales" accept=".xlsx">
+
+        <label for="BigBasket_Sales">BigBasket Sales file:</label>
+        <input type="file" id="BigBasket_Sales" name="BigBasket_Sales" accept=".csv">
+
+        <label for="Flipkart&Shopsy_Sales">Flipkart & Shopsy file:</label>
+        <input type="file" id="Flipkart&Shopsy_Sales" name="Flipkart&Shopsy_Sales" accept=".xlsx">
+
+        <label for="flipkart_grocery">flipkart grocery file:</label>
+        <input type="file" id="flipkart_grocery" name="flipkart_grocery" accept=".xlsx">
+
+        <label for="JioMart_Sales">JIOMart Sales file:</label>
+        <input type="file" id="JioMart_Sales" name="JioMart_Sales" accept=".csv">
+
+        <label for="Swiggy_Sales">SWIGGY Sales file:</label>
+        <input type="file" id="Swiggy_Sales" name="Swiggy_Sales" accept=".xlsx">
+
+        <input type="submit" value="Submit"> 
+      </form>
+    </div>        
+
+    <button class="back-button" onclick="backToMain2()">Back to Main Menu</button>
+  </div>
+    
+  <button class="back-button" onclick="showPreviousPage()">Back to Page 1</button>
+
+  <div id="loading-overlay2" class="loading-overlay hidden">
+    <div class="loading-content">
+      <p>YOUR REPORT PREPARING....</p>
+      <img src="https://s1.aigei.com/src/img/gif/f9/f9692dd82962448fb49533bdb81b252d.gif?imageMogr2/auto-orient/thumbnail/!282x282r/gravity/Center/crop/282x282/quality/85/%7CimageView2/2/w/282&e=1735488000&token=P7S2Xpzfz11vAkASLTkfHN7Fw-oOZBecqeJaxypL:FKZJ6BP9PNc2oXrxLo2XparmLxA=" alt="we prepare your report" />
+    </div>
+  </div>
+
+  <footer style="background-color: #0b1a11; color: #ffffffbd; padding: 7px 0; position: relative;">
+    <div class="footer-content" style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+      <p style="margin: 3px 0;">@Madhu Jayanti International Pvt. Ltd. &copy; 2024</p>
+      <p style="margin: 3px 0;">Website - <a href="https://teameteas.com/" target="_blank" style="color: #ffffffbd; text-decoration: none;">https://teameteas.com/</a></p>
+      <p style="margin: 3px 0;">Powered by <strong>Sirshendu Kundu</strong></p>
+    </div>
+  </footer>
+
+
+
+  <script>
+
+
+    function opengoogleSection() {
+
+      // Hide main content and show the upload section
+      document.getElementById("main-content-page2").style.display = "none";  // Hide main content
+      document.getElementById("upload-section-page2").classList.remove("hidden");  // Show upload section
+      
+      // Hide the MakeMyTrip section and show the Google section
+      document.querySelector('.googlescrap-container').style.display = 'block';  // Show Google container
+      document.querySelector('.mmtscrap-container').style.display = 'none';  // Hide MakeMyTrip container
+      document.querySelector('.ecomarketscrap-container').style.display = 'none';
+
+      // Show the Google header and hide the MakeMyTrip header
+      document.querySelector('.googlescrap-header').classList.remove('hidden');  // Show Google header
+      document.querySelector('.mmtscrap-header').style.display = 'none';  // Hide MakeMyTrip header
+      document.querySelector('.ecomarketscrap-header').style.display = 'none'; 
+    }
+
+    function openmmtSection() {
+
+      // Hide main content and show the upload section
+      document.getElementById("main-content-page2").style.display = "none";  // Hide main content
+      document.getElementById("upload-section-page2").classList.remove("hidden");  // Show upload section
+
+      // Hide the Google section and show the MakeMyTrip section
+      document.querySelector('.mmtscrap-container').style.display = 'block';  // Show MakeMyTrip container
+      document.querySelector('.googlescrap-container').style.display = 'none';  // Hide Google container
+      document.querySelector('.ecomarketscrap-container').style.display = 'none';
+
+      // Show the MakeMyTrip header and hide the Google header
+      document.querySelector('.mmtscrap-header').classList.remove('hidden');  // Show MakeMyTrip header
+      document.querySelector('.googlescrap-header').style.display = 'none';   // Hide Google header
+      document.querySelector('.ecomarketscrap-header').style.display = 'none'; 
+
+    }
+
+    function openecomarketSection() {
+
+      // Hide main content and show the upload section
+      document.getElementById("main-content-page2").style.display = "none";  // Hide main content
+      document.getElementById("upload-section-page2").classList.remove("hidden");  // Show upload section
+
+      // Hide the Google section and show the MakeMyTrip section
+      document.querySelector('.ecomarketscrap-container').style.display = 'block';  // Show MakeMyTrip container
+      document.querySelector('.googlescrap-container').style.display = 'none';  // Hide Google container
+      document.querySelector('.mmtscrap-container').style.display = 'none';
+
+      // Show the MakeMyTrip header and hide the Google header
+      document.querySelector('.ecomarketscrap-header').classList.remove('hidden');  // Show MakeMyTrip header
+      document.querySelector('.googlescrap-header').style.display = 'none';   // Hide Google header
+      document.querySelector('.mmtscrap-header').style.display = 'none'; 
+
+    }    
+ 
+
+    function backToMain2() {
+      // Hide the upload section and show the main content
+      document.getElementById("upload-section-page2").classList.add("hidden");  // Hide upload section
+      document.getElementById("main-content-page2").style.display = "block";  // Show main content
+    }
+
+    function showLoading() {
+      // Show the loading overlay
+      document.getElementById("loading-overlay2").classList.remove("hidden");
+    }
+    
+    // Add event listeners to both forms to show the loading overlay on submit
+    document.querySelectorAll('form').forEach(form => {
+      form.addEventListener('submit', showLoading);
+    });
+  </script>
+  
+
+</div>
+
+<script>
+  function showNextPage() {
+    document.getElementById('page-1').classList.add('hidden');
+    document.getElementById('page-2').classList.remove('hidden');
+  }
+
+  function showPreviousPage() {
+    document.getElementById('page-2').classList.add('hidden');
+    document.getElementById('page-1').classList.remove('hidden');
+  }
+</script>
+
+</body>
+</html>      
